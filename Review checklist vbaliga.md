@@ -12,6 +12,8 @@
 - [x] **Repository:** Is the source code for this software available at the <a target="_blank" href="https://github.com/JonasMoss/univariateML">repository url</a>?
 - [x] **License:** Does the repository contain a plain-text LICENSE file with the contents of an [OSI approved](https://opensource.org/licenses/alphabetical) software license?
 
+I see there's been some discussion about the License formatting but that @arfon has instructed to keep things as they are. So I will just check this off.
+
 - [x] **Contribution and authorship:** Has the submitting author (@JonasMoss) made major contributions to the software? Does the full list of paper authors seem appropriate and complete?
 
 ### Functionality
@@ -52,9 +54,14 @@ I'm happy with what I see here! Very nicely thought out. I did not catch any err
 
 - [x] **Community guidelines:** Are there clear guidelines for third parties wishing to 1) Contribute to the software 2) Report issues or problems with the software 3) Seek support
 
+I like the update you made following the other reviewer's comments. Looks good!
+
 ### Software paper
 
 - [x] **Summary:** Has a clear description of the high-level functionality and purpose of the software for a diverse, non-specialist audience been provided?
+
+I'm happy enough with the language to check this off, but I'll also note that the first sentence of the paper could be tweaked to be a bit more descriptive. I like the language used in both the README and the Overview vignette -- it's nice to have a lead statement that gives me a full sense of what the package does in a punchy way. But this is a minor comment and not one that I'm looking to have enforced. 
+
 - [x] **A statement of need:** Do the authors clearly state what problems the software is designed to solve and who the target audience is?
 - [ ] **State of the field:** Do the authors describe how this software compares to other commonly-used packages?
 
@@ -62,9 +69,9 @@ I'd recommend expanding this further. Right now, the paper mentions how this pac
 
 Within the paper, can you give at least one example of a custom-made optimizer within `univariateML` and show how this optimizer's performance fares against what is built into base R or another package? How have other functions let us down?
 
-I suspect that the ability to fit each distribution is already available through other R packages (and this seems to be somewhat confirmed by the table in the Distributions vignette). If there are any distributions that are not covered by other packages, please make this explicit in the paper by specifying the name of the estimator function in `univariateML`.
+I suspect that the ability to fit each distribution is already available through other R packages (and this seems to be somewhat confirmed by the table in the Distributions vignette). If there are any distributions that are not covered by other packages, please make this explicit in the paper by specifying the name of the `univariateML` estimator function.
 
-I also think there is merit to incorporating more of a "one stop shop" argument in here. It's convenient to have all of these functions within the same package, especially as they feed nicely into the "Data analysis aids" functions, which I'd argue are are the most important parts of the package. So I recommend that the language of the paper be adjusted to tell the reader why it's good to use this package instead of relying on what is already 
+I also think there is merit to incorporating more of a "one stop shop" argument in here. It's convenient to have all of these functions within the same package, especially as they feed nicely into the "Data analysis aids" functions, which I'd argue are are the most important parts of the package. So I recommend that the language of the paper be further adjusted to tell the reader why it's good to use this package instead of relying on what is already out there.
 
 - [x] **Quality of writing:** Is the paper well written (i.e., it does not require editing for structure, language, or writing quality)?
 - [x] **References:** Is the list of references complete, and is everything cited appropriately that should be cited (e.g., papers, datasets, software)? Do references in the text use the proper [citation syntax]( https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html#citation_syntax)?
@@ -75,7 +82,7 @@ I also think there is merit to incorporating more of a "one stop shop" argument 
 
 Hi @JonasMoss and @arfon,
 
-Thanks for giving me extra time to review this. I'm generally very impressed with `univariateML` and I can see myself using it. I'd say the vast majority of my comments are geared towards enhancing clarity of presentation, especially for anyone new to the package.
+Thanks for giving me extra time to review this. I'm generally very impressed with `univariateML` and I can see myself using it. I'd say the vast majority of my comments are geared towards enhancing clarity of presentation, especially for anyone new to the package. Checklist above has been updated.
 
 I have a few more comments that don't exactly fit into the JOSS review checklist, so I will paste them here.
 
@@ -87,11 +94,9 @@ Vikram
 
 - I suggest inserting a `_` within the names of the maximum likelihood estimator functions. I had some trouble distinguishing function names like `mllnorm()` from `mlnorm()` as I tested things out. Having the `_` could help here, e.g. `ml_lnorm()` vs `ml_norm()` is easier for me to distinguish.
 - Any interest in creating a delta AIC function? I.e. take the `data.frame` made by `stats::AIC()`, find the minimum AIC value and calculate the delta of each model's AIC from that? Not sure if this already exists elsewhere, but I assume not since you custom-wrote a few lines in your vignettes. But it could be a nice addition to the "Data analysis aids" set of functions that basically supersedes `stats::AIC()` by giving the AICs and also deltas (and maybe AICcs if the user prefers?)
-- I also have a suggestion that I'll leave entirely optional at this point: You might give some thought to the 'ecosystem' approach of integrating `univariateML` with your previous `kdensity` package. Can objects made from one package be used by the other in a convenient way? If so, it might be nice to have a 4th vignette demonstrating this. 
+- I also have a suggestion that I'll leave entirely optional at this point: You might give some thought to the 'ecosystem' approach of integrating `univariateML` with your previous `kdensity` package. Can objects made from one package be used by the other in a convenient way? If so, it might be nice to have a 4th vignette demonstrating this and/or some language in the JOSS paper. 
 
 #### Some relatively minor spelling/grammatical/formatting things:
-
-(please note I didn't set out to check this thoroughly, these are just things I happened to notice)
 
 - Within the Overview vignette, the first line does not resolve into a bulleted list (at least on the rendered Netlify site)
 - Also in the Overview, section "Comparing Many Models with AIC": please revise the line "The generic in `R` can take multiple models, and the lower the the better" so that it's clearer to your reader that the second half of the sentence refers specifically to AIC values. 
