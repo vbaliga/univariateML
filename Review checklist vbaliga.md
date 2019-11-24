@@ -23,7 +23,7 @@ Yes, although I note that using either `devools::check()` or `devtools::install_
 - [x] **Functionality:** Have the functional claims of the software been confirmed?
 - [ ] **Performance:** If there are any performance claims of the software, have they been confirmed? (If there are no claims, please check off this item.)
 
-Language such as "quick, easy, and free of bugs" is used, but I don't see any specifics on how the custom made optimizers perform. I am familiar enough with many of them that I can attest to their veracity in fitting parameters (and they are well-covered by the package's `testthat`), but speed or efficiency haven't been documented.
+Language such as "quick, easy, and free of bugs" is used in a few places, but I don't see any specifics on how the custom-made optimizers perform. I am familiar enough with many of them that I can attest to their veracity in fitting parameters (and they are well-covered by the package's `testthat`), but speed or efficiency haven't been documented. I do agree that `univariateML` provides a lot of convenience. But if language like "quick" is going to be used, it should be backed up with evidence.
 
 ### Documentation
 
@@ -71,24 +71,29 @@ I also think there is merit to incorporating more of a "one stop shop" argument 
 
 
 
-### Additional requests
+## Additional comments
+
+Hi @JonasMoss and @arfon,
+
+Thanks for giving me extra time to review this. I'm generally very impressed with `univariateML` and I can see myself using it. I'd say the vast majority of my comments are geared towards enhancing clarity of presentation, especially for anyone new to the package.
+
+I have a few more comments that don't exactly fit into the JOSS review checklist, so I will paste them here.
+
+Best regards,
+Vikram
+
+#### Additional comments:
 
 - I suggest inserting a `_` within the names of the maximum likelihood estimator functions. I had some trouble distinguishing function names like `mllnorm()` from `mlnorm()` as I tested things out. Having the `_` could help here, e.g. `ml_lnorm()` vs `ml_norm()` is easier for me to distinguish.
-
 - Any interest in creating a delta AIC function? I.e. take the `data.frame` made by `stats::AIC()`, find the minimum AIC value and calculate the delta of each model's AIC from that? Not sure if this already exists elsewhere, but I assume not since you custom-wrote a few lines in your vignettes. But it could be a nice addition to the "Data analysis aids" set of functions that basically supersedes `stats::AIC()` by giving the AICs and also deltas (and maybe AICcs if the user prefers?)
-
 - I also have a suggestion that I'll leave entirely optional at this point: You might give some thought to the 'ecosystem' approach of integrating `univariateML` with your previous `kdensity` package. Can objects made from one package be used by the other in a convenient way? If so, it might be nice to have a 4th vignette demonstrating this. 
 
-  #### Some relatively minor spelling/grammatical/formatting things:
+#### Some relatively minor spelling/grammatical/formatting things:
 
-  (please note I didn't set out to check this thoroughly, these are just things I happened to notice)
+(please note I didn't set out to check this thoroughly, these are just things I happened to notice)
 
 - Within the Overview vignette, the first line does not resolve into a bulleted list (at least on the rendered Netlify site)
-
 - Also in the Overview, section "Comparing Many Models with AIC": please revise the line "The generic in `R` can take multiple models, and the lower the the better" so that it's clearer to your reader that the second half of the sentence refers specifically to AIC values. 
-
 - Also in the Overview vignette, section "Confidence Intervals", sentence 2: Change "Do do" to "To do"
-
 - In the "Copula Modeling" vignette: "...the copula is know,..." should be "...the copula is known,..."
-
 - `spelling::spell_check_package()` yields mostly false positives, but there are a couple items (e.g. "similarily" in `ProbabilityPlots.Rd:68`) that merit correction
